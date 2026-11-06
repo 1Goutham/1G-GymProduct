@@ -10,7 +10,7 @@ export const runtime = "nodejs";
  * Hikvision ISAPI bridges, or your own) that can POST JSON.
  *
  *   POST /api/biometric/events
- *   x-1g-signature: hex(HMAC-SHA256(BIOMETRIC_WEBHOOK_SECRET, rawBody))
+ *   x-aathlytx-signature: hex(HMAC-SHA256(BIOMETRIC_WEBHOOK_SECRET, rawBody))
  *   { "userId": "1042", "ts": "2026-11-06T18:42:10+05:30", "deviceSerial": "CKUH224960231", "direction": "in", "method": "face" }
  *   or { "events": [ ...same shape ] }
  */
@@ -39,7 +39,7 @@ function verify(raw: string, sig: string | null) {
 
 export async function POST(req: Request) {
   const raw = await req.text();
-  if (!verify(raw, req.headers.get("x-1g-signature"))) {
+  if (!verify(raw, req.headers.get("x-aathlytx-signature"))) {
     return Response.json({ ok: false, error: "invalid signature" }, { status: 401 });
   }
   let json: unknown;

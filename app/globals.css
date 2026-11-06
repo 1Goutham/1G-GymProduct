@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────────────────────────────────
- * 1Gtemplates — design tokens
+ * Aathlytx — design tokens
  *
  * Calm, Apple-grade surfaces: a soft #f5f5f7 ground, white cards, hairlines
- * and big confident numbers. The 1G lime survives as the "live" signal — the
+ * and big confident numbers. The Aathlytx lime survives as the "live" signal — the
  * pulse of the floor — never as decoration. Data colour comes from a
  * validated categorical set; status colour is reserved for state.
  * ────────────────────────────────────────────────────────────────────────── */
@@ -25,10 +25,10 @@
   --ink: #1d1d1f;          /* primary button */
   --ink-fg: #ffffff;
 
-  --brand: #9dff50;        /* 1G lime — "live" */
+  --brand: #9be22d;        /* Aathlytx lime — "live" */
   --brand-ink: #0b1600;
   --brand-text: #3d8c00;   /* lime legible on white */
-  --brand-soft: rgba(124, 214, 40, 0.14);
+  --brand-soft: rgba(155, 226, 45, 0.16);
 
   /* Categorical (validated, fixed order) */
   --s1: #2a78d6;
@@ -68,8 +68,8 @@
     --faint: #7c7c82;
     --ink: #f5f5f7;
     --ink-fg: #000000;
-    --brand-text: #9dff50;
-    --brand-soft: rgba(157, 255, 80, 0.12);
+    --brand-text: #9be22d;
+    --brand-soft: rgba(155, 226, 45, 0.14);
     --s1: #3987e5;
     --s2: #d95926;
     --s3: #199e70;
@@ -100,8 +100,8 @@
   --faint: #7c7c82;
   --ink: #f5f5f7;
   --ink-fg: #000000;
-  --brand-text: #9dff50;
-  --brand-soft: rgba(157, 255, 80, 0.12);
+  --brand-text: #9be22d;
+  --brand-soft: rgba(155, 226, 45, 0.14);
   --s1: #3987e5;
   --s2: #d95926;
   --s3: #199e70;
@@ -331,7 +331,7 @@ body {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 0 0.5px rgba(0, 0, 0, 0.04);
   }
 
-  /* 1G signature — hairline that draws on hover */
+  /* Aathlytx signature — hairline that draws on hover */
   .row-line {
     position: relative;
   }

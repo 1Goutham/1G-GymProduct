@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "1Gtemplates — Gym OS", template: "%s · 1Gtemplates" },
+  title: { default: "AATHLYTX — Gym OS", template: "%s · AATHLYTX" },
   description: "The operating system for modern gyms: live biometric floor, trainers, equipment, procurement, finance and an AI copilot.",
 };
 
@@ -14,7 +14,7 @@ export const viewport: Viewport = {
 };
 
 // Apply a saved theme before paint so there is no flash.
-const themeScript = `try{var t=localStorage.getItem("1g-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}`;
+const themeScript = `try{var t=localStorage.getItem("ax-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

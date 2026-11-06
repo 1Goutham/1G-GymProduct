@@ -8,6 +8,7 @@ import { Search, Sun, Moon, Monitor, Menu, X, CornerDownLeft, Sparkles, CheckCir
 import { NAV, isActive } from "./nav";
 import { cn } from "@/lib/cn";
 import { Kbd } from "@/components/ui/primitives";
+import { Mark, Wordmark } from "@/components/brand/logo";
 
 /* ── Toasts ──────────────────────────────────────────────────────────────── */
 type Toast = { id: number; text: string; tone: "ok" | "warn" };
@@ -18,21 +19,11 @@ export const useToast = () => useContext(ToastCtx);
 const LiveCtx = createContext<{ inside: number; capacity: number } | null>(null);
 export const useLiveCount = () => useContext(LiveCtx);
 
-function Logo() {
-  return (
-    <span className="grid size-8 place-items-center rounded-[10px] bg-[#1d1d1f] text-[13px] font-bold tracking-tight text-white ring-1 ring-white/10">
-      <span>
-        1<span className="text-brand">G</span>
-      </span>
-    </span>
-  );
-}
-
 function ThemeToggle() {
   const [mode, setMode] = useState<"system" | "light" | "dark">("system");
   useEffect(() => {
     try {
-      const m = localStorage.getItem("1g-theme");
+      const m = localStorage.getItem("ax-theme");
       if (m === "light" || m === "dark") setMode(m);
     } catch {}
   }, []);
@@ -40,10 +31,10 @@ function ThemeToggle() {
     setMode(m);
     try {
       if (m === "system") {
-        localStorage.removeItem("1g-theme");
+        localStorage.removeItem("ax-theme");
         document.documentElement.removeAttribute("data-theme");
       } else {
-        localStorage.setItem("1g-theme", m);
+        localStorage.setItem("ax-theme", m);
         document.documentElement.setAttribute("data-theme", m);
       }
     } catch {
@@ -73,15 +64,15 @@ function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const live = useLiveCount();
   return (
     <div className="flex h-full flex-col">
-      <Link href="/" onClick={onNavigate} className="flex items-center gap-2.5 px-5 pb-5 pt-6">
-        <Logo />
-        <span className="leading-tight">
-          <span className="block text-[15px] font-semibold tracking-[-0.02em] text-fg">1Gtemplates</span>
-          <span className="block text-[11.5px] text-muted">Forge Fitness · Anna Nagar</span>
+      <Link href="/" onClick={onNavigate} className="flex items-center gap-3 px-5 pb-5 pt-6 text-fg" aria-label="AATHLYTX home">
+        <Mark size={30} />
+        <span className="grid gap-1.5">
+          <Wordmark height={11} />
+          <span className="block text-[11.5px] leading-none text-muted">Forge Fitness · Anna Nagar</span>
         </span>
       </Link>
       <button
-        onClick={() => window.dispatchEvent(new Event("1g:palette"))}
+        onClick={() => window.dispatchEvent(new Event("ax:palette"))}
         className="mx-3 mb-4 flex h-9 items-center gap-2 rounded-[10px] bg-surface-3 px-3 text-[13px] text-muted transition-colors hover:text-fg"
       >
         <Search className="size-3.5" />
@@ -155,10 +146,10 @@ function Palette() {
     };
     const onOpen = () => setOpen(true);
     window.addEventListener("keydown", onKey);
-    window.addEventListener("1g:palette", onOpen);
+    window.addEventListener("ax:palette", onOpen);
     return () => {
       window.removeEventListener("keydown", onKey);
-      window.removeEventListener("1g:palette", onOpen);
+      window.removeEventListener("ax:palette", onOpen);
     };
   }, []);
   useEffect(() => {
@@ -280,10 +271,11 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <button className="btn btn-ghost !px-2" aria-label="Open menu" onClick={() => setDrawer(true)}>
               <Menu className="size-5" />
             </button>
-            <Link href="/" className="flex items-center gap-2 text-[15px] font-semibold tracking-tight">
-              <Logo /> 1Gtemplates
+            <Link href="/" className="flex items-center gap-2.5 text-fg" aria-label="AATHLYTX home">
+              <Mark size={24} />
+              <Wordmark height={10} />
             </Link>
-            <button className="btn btn-ghost !px-2" aria-label="Search" onClick={() => window.dispatchEvent(new Event("1g:palette"))}>
+            <button className="btn btn-ghost !px-2" aria-label="Search" onClick={() => window.dispatchEvent(new Event("ax:palette"))}>
               <Search className="size-5" />
             </button>
           </div>

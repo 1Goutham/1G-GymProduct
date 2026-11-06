@@ -12,7 +12,7 @@ export const metadata = { title: "Biometrics" };
 
 export default async function DevicesPage() {
   const h = await headers();
-  const host = h.get("x-forwarded-host") ?? h.get("host") ?? "your-1g-domain.com";
+  const host = h.get("x-forwarded-host") ?? h.get("host") ?? "your-aathlytx-domain.com";
   const proto = h.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
   const base = `${proto}://${host}`;
   const snap = snapshot();
@@ -22,7 +22,7 @@ export default async function DevicesPage() {
 SIG=$(printf '%s' "$BODY" | openssl dgst -sha256 -hmac "$BIOMETRIC_WEBHOOK_SECRET" -hex | sed 's/^.* //')
 curl -X POST ${base}/api/biometric/events \\
   -H "content-type: application/json" \\
-  -H "x-1g-signature: $SIG" \\
+  -H "x-aathlytx-signature: $SIG" \\
   -d "$BODY"`;
 
   return (
@@ -66,7 +66,7 @@ curl -X POST ${base}/api/biometric/events \\
               <Server className="size-4 text-s1" /> Option A · ADMS push (ZKTeco, eSSL)
             </span>
           }
-          subtitle="No middleware. The terminal talks to 1Gtemplates directly."
+          subtitle="No middleware. The terminal talks to Aathlytx directly."
         >
           <ol className="grid gap-2.5 text-[13.5px] leading-relaxed text-fg-2">
             <li>
@@ -76,7 +76,7 @@ curl -X POST ${base}/api/biometric/events \\
               <span className="font-medium text-fg">2.</span> Server address <code className="rounded bg-surface-3 px-1.5 font-mono text-[12.5px]">{host}</code>, port <code className="rounded bg-surface-3 px-1.5 font-mono text-[12.5px]">{proto === "https" ? 443 : 80}</code>, HTTPS {proto === "https" ? "on" : "off"}.
             </li>
             <li>
-              <span className="font-medium text-fg">3.</span> Enrol members with their 1G member number as the user ID (PIN).
+              <span className="font-medium text-fg">3.</span> Enrol members with their Aathlytx member number as the user ID (PIN).
             </li>
             <li>
               <span className="font-medium text-fg">4.</span> The device appears here within a minute. Punches stream to the live floor in real time.

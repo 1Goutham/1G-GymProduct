@@ -113,7 +113,7 @@ export function CopilotChat({ engine, initialQuestion }: { engine: "claude" | "o
       <div className="flex items-center justify-between border-b border-line px-5 py-3">
         <div className="flex items-center gap-2 text-[13px] text-muted">
           <span className={cn("size-2 rounded-full", engine === "claude" ? "bg-ok" : "bg-s1")} />
-          {engine === "claude" ? "Claude · grounded in live gym data" : "1G engine · offline mode (add ANTHROPIC_API_KEY for Claude)"}
+          {engine === "claude" ? "Claude · grounded in live gym data" : "Aathlytx engine · offline mode (add ANTHROPIC_API_KEY for Claude)"}
         </div>
         {msgs.length > 0 && (
           <button className="btn btn-ghost btn-sm" onClick={() => setMsgs([])} disabled={busy}>

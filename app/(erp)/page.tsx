@@ -70,7 +70,7 @@ export default function Today() {
               <Sparkles className="size-4 text-s1" /> Your briefing
             </span>
           }
-          subtitle="1G AI reads the floor, the machines, the books and the members — and ranks what matters."
+          subtitle="Aathlytx AI reads the floor, the machines, the books and the members — and ranks what matters."
           action={
             <Link href="/copilot" className="btn btn-soft btn-sm">
               Ask a question

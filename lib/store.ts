@@ -37,7 +37,7 @@ interface Store extends Seed {
   seq: number;
 }
 
-const g = globalThis as unknown as { __1g_store?: Store };
+const g = globalThis as unknown as { __aathlytx_store?: Store };
 
 function boot(): Store {
   const now = Date.now();
@@ -63,8 +63,8 @@ function boot(): Store {
 }
 
 export function db(): Store {
-  if (!g.__1g_store) g.__1g_store = boot();
-  return g.__1g_store;
+  if (!g.__aathlytx_store) g.__aathlytx_store = boot();
+  return g.__aathlytx_store;
 }
 
 export function nextId(prefix: string) {
@@ -339,7 +339,7 @@ export function ingest(input: IngestInput, source: Device["source"]) {
     direction,
     method: input.method ?? "face",
     verified: !!(member || trainer) && !blocked,
-    note: blocked ? `Membership ${member!.status} — gate held` : !(member || trainer) ? "Not enrolled in 1Gtemplates" : undefined,
+    note: blocked ? `Membership ${member!.status} — gate held` : !(member || trainer) ? "Not enrolled in Aathlytx" : undefined,
   });
 }
 

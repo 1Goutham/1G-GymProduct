@@ -42,7 +42,7 @@ export default async function EquipmentPage({ searchParams }: { searchParams: Pr
 
   return (
     <>
-      <PageHeader eyebrow="Assets" title="Equipment" subtitle="Every machine with a live health score. 1G AI predicts breakdowns from usage hours, service debt, age and reports — so you service before it breaks." art={<TreadmillArt size={112} />} />
+      <PageHeader eyebrow="Assets" title="Equipment" subtitle="Every machine with a live health score. Aathlytx AI predicts breakdowns from usage hours, service debt, age and reports — so you service before it breaks." art={<TreadmillArt size={112} />} />
       <div className="mb-5 grid grid-cols-2 gap-4 lg:grid-cols-4">
         <Stat label="Fleet health" value={avg} hint={`${eq.length} assets tracked`} icon={<HeartPulse className="size-4" />} />
         <Stat label="Predicted to fail · 14d" value={atRisk.length} hint="risk ≥ 50%" icon={<Sparkles className="size-4" />} tone={atRisk.length ? "warn" : undefined} />

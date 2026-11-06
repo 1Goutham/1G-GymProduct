@@ -1,4 +1,4 @@
-# 1Gtemplates — the operating system for gyms
+# AATHLYTX — the operating system for gyms
 
 An ERP for a modern gym, not a membership spreadsheet. One calm, Apple-grade surface for the whole business: who is on the floor right now, who can coach, which machine is about to break, what to reorder, and where the money went.
 
@@ -6,7 +6,7 @@ An ERP for a modern gym, not a membership spreadsheet. One calm, Apple-grade sur
 
 | Module | What it does |
 | --- | --- |
-| **Today** | A morning briefing: live headcount, revenue pace, fleet health and dues, plus a ranked list of what needs you, written by the 1G AI engine. |
+| **Today** | A morning briefing: live headcount, revenue pace, fleet health and dues, plus a ranked list of what needs you, written by the Aathlytx AI engine. |
 | **Live floor** | Real-time occupancy from biometric turnstiles (SSE, every 2s). Shows a capacity ring, a floor map with zone density, hour-by-hour actual vs. forecast, a punch-by-punch biometric stream (denied gates included), trainer availability and terminal health. Also a weekly heatmap. |
 | **Trainers** | A Gantt of shifts and bookings with a "now" line. Click an open slot to book PT (with clash detection). Shows utilisation, ratings, PT rates and on-floor status from staff punches. |
 | **Members** | 1,240 members with plan, status, 30-day visits and an explainable churn score. Filter by in-gym, at-risk, renewals or lapsed. Bulk WhatsApp renewal links or trainer check-ins. |
@@ -22,7 +22,7 @@ There is also a light, dark and system theme with a no-flash toggle, a mobile dr
 
 ## Connecting biometric devices
 
-**ADMS push (ZKTeco, eSSL and other iclock-protocol terminals):** set the terminal's *Cloud Server / ADMS* address to your 1Gtemplates host. The device then calls:
+**ADMS push (ZKTeco, eSSL and other iclock-protocol terminals):** set the terminal's *Cloud Server / ADMS* address to your Aathlytx host. The device then calls:
 
 ```
 GET  /iclock/cdata?SN=<serial>&options=all   handshake (returns push options, TimeZone=5.5)
@@ -37,7 +37,7 @@ Unknown serials register themselves. Enrol members using their member number (10
 ```bash
 BODY='{"userId":"1042","deviceSerial":"CKUH224960231","direction":"in","method":"face"}'
 SIG=$(printf '%s' "$BODY" | openssl dgst -sha256 -hmac "$BIOMETRIC_WEBHOOK_SECRET" -hex | sed 's/^.* //')
-curl -X POST https://<host>/api/biometric/events -H "content-type: application/json" -H "x-1g-signature: $SIG" -d "$BODY"
+curl -X POST https://<host>/api/biometric/events -H "content-type: application/json" -H "x-aathlytx-signature: $SIG" -d "$BODY"
 ```
 
 You can also send `{ "events": [...] }` (up to 500 per request). In production, unsigned requests are rejected with a 401.

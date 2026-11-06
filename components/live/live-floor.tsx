@@ -147,7 +147,7 @@ export function LiveFloor({ initial }: { initial: LiveSnapshot }) {
         </Card>
       </div>
 
-      <Card title="Today, hour by hour" subtitle="Peak occupancy each hour vs. the 1G forecast" action={<Legend items={[{ label: "Actual", color: "var(--s1)" }, { label: "Forecast", color: "var(--muted)", dashed: true }]} />}>
+      <Card title="Today, hour by hour" subtitle="Peak occupancy each hour vs. the Aathlytx forecast" action={<Legend items={[{ label: "Actual", color: "var(--s1)" }, { label: "Forecast", color: "var(--muted)", dashed: true }]} />}>
         <AreaChart data={snap.hourly.map((h) => ({ label: hourLabel(h.hour), actual: h.count, forecast: h.forecast }))} capacity={snap.capacity} nowIndex={nowIdx} height={240} />
       </Card>
 

@@ -61,7 +61,7 @@ export async function createTicket(input: z.input<typeof TicketInput>) {
     scheduledFor: new Date(Date.now() + v.inDays * DAY).toISOString(),
     closed: null,
     cost: v.type === "breakdown" ? 6000 : v.type === "amc" ? 0 : 2500,
-    notes: v.notes || (v.type === "preventive" ? "Preventive service booked by 1G health model." : "Service requested."),
+    notes: v.notes || (v.type === "preventive" ? "Preventive service booked by Aathlytx health model." : "Service requested."),
     slaHours: v.type === "breakdown" ? 48 : 96,
   });
   const faults = s.faults.filter((f) => f.equipmentId === v.equipmentId && f.status === "open" && (!v.faultId || f.id === v.faultId));
@@ -112,11 +112,11 @@ export async function autoScheduleService() {
       scheduledFor: new Date(Date.now() + 2 * DAY).toISOString(),
       closed: null,
       cost: 2500,
-      notes: `Auto-booked by 1G AI: ${e.reason}.`,
+      notes: `Auto-booked by Aathlytx AI: ${e.reason}.`,
       slaHours: 96,
     });
   }
-  if (risky.length) log("ai", `1G AI booked ${risky.length} preventive service visits`);
+  if (risky.length) log("ai", `Aathlytx AI booked ${risky.length} preventive service visits`);
   refresh("/equipment", "/service");
   return { count: risky.length };
 }
@@ -175,8 +175,8 @@ export async function autoDraftPOs() {
       title: `Restock — ${vendor.category.split(" ")[0].toLowerCase()}`,
       vendorId,
       lines: items.map((i) => ({ name: i.name, qty: i.suggestQty, unitCost: i.unitCost })),
-      reason: `1G AI: ${items.length} item${items.length > 1 ? "s" : ""} at or below reorder point. Quantities cover ~6 weeks of usage.`,
-      requestedBy: "1G AI",
+      reason: `Aathlytx AI: ${items.length} item${items.length > 1 ? "s" : ""} at or below reorder point. Quantities cover ~6 weeks of usage.`,
+      requestedBy: "Aathlytx AI",
       source: "ai",
     });
     ids.push(r.id);

@@ -17,7 +17,7 @@ export interface Insight {
 }
 
 /**
- * The 1G operations brain. Deterministic, explainable rules over live data —
+ * The Aathlytx operations brain. Deterministic, explainable rules over live data —
  * every insight carries the evidence it was built from. The LLM copilot
  * receives this same picture as context, so the two never disagree.
  */

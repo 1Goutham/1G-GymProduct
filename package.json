@@ -1,8 +1,8 @@
 {
-  "name": "1gtemplates",
+  "name": "aathlytx",
   "version": "0.1.0",
   "private": true,
-  "description": "1Gtemplates — the operating system for modern gyms. Live biometric floor, trainers, equipment, procurement, finance and an AI copilot.",
+  "description": "Aathlytx — the operating system for modern gyms. Live biometric floor, trainers, equipment, procurement, finance and an AI copilot.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

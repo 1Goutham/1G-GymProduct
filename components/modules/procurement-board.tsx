@@ -83,7 +83,7 @@ export function ProcurementBoard({ orders, inventory, vendors, openNew }: { orde
           <div className="min-w-0 flex-1">
             <div className="text-[15px] font-semibold text-fg">{low.length} items need restocking</div>
             <div className="mt-0.5 text-[13px] text-muted">
-              1G AI groups them by vendor and sizes each order for ~6 weeks of usage. {low.slice(0, 3).map((i) => i.name).join(", ")}
+              Aathlytx AI groups them by vendor and sizes each order for ~6 weeks of usage. {low.slice(0, 3).map((i) => i.name).join(", ")}
               {low.length > 3 ? ` and ${low.length - 3} more.` : "."}
             </div>
           </div>

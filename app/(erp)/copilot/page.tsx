@@ -16,7 +16,7 @@ export default async function CopilotPage({ searchParams }: { searchParams: Prom
       <PageHeader eyebrow="Business" title="Copilot" subtitle="Your operations analyst. It reads the same live data you see — floor, trainers, machines, stock and the books." art={<SparkArt size={112} />} />
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px]">
         <CopilotChat engine={engine} initialQuestion={q} />
-        <Card title="What 1G AI is watching" subtitle="Ranked by urgency" className="hidden xl:block">
+        <Card title="What Aathlytx AI is watching" subtitle="Ranked by urgency" className="hidden xl:block">
           <InsightList items={ins} limit={7} />
         </Card>
       </div>
