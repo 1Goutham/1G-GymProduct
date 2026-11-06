@@ -69,4 +69,4 @@ Scripts: `npm run dev`, `npm run build`, `npm start`, `npm run typecheck`.
 - `components/charts`: hand-built SVG charts (area with forecast, grouped bars, ring, heatmap, share bar) with hover tooltips and validated colours in both themes.
 - `components/illustrations`: a matching set of minimal line illustrations.
 
-The demo store is in-memory and seeded deterministically (Forge Fitness, Anna Nagar, Chennai, IST). Persistence sits behind `lib/store.ts`, so swapping in Postgres or Supabase doesn't touch any screen.
+The demo store is in-memory and seeded deterministically (RP Fitness, Tenkasi, Tamil Nadu, IST). Persistence sits behind `lib/store.ts`, so swapping in Postgres or Supabase doesn't touch any screen.

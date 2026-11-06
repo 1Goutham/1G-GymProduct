@@ -68,7 +68,7 @@ function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
         <Mark size={30} />
         <span className="grid gap-1.5">
           <Wordmark height={11} />
-          <span className="block text-[11.5px] leading-none text-muted">Forge Fitness · Anna Nagar</span>
+          <span className="block text-[11.5px] leading-none text-muted">RP Fitness · Tenkasi</span>
         </span>
       </Link>
       <button

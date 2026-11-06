@@ -33,9 +33,9 @@ export function rng(seed: number) {
 }
 
 export const CONFIG: GymConfig = {
-  name: "Forge Fitness",
-  branch: "Anna Nagar",
-  city: "Chennai",
+  name: "RP Fitness",
+  branch: "Tenkasi",
+  city: "Tamil Nadu",
   timeZone: "Asia/Kolkata",
   capacity: 160,
   open: 5,
@@ -238,7 +238,7 @@ export function buildSeed(now = Date.now()): Seed {
     { id: "v3", name: "NutriSource Distributors", category: "Supplements", contact: "Shalini P.", phone: "+91 90031 77889", rating: 4.2, leadDays: 3, amc: false },
     { id: "v4", name: "CleanPro Facility", category: "Consumables & housekeeping", contact: "Joseph A.", phone: "+91 94440 22110", rating: 4.0, leadDays: 2, amc: false },
     { id: "v5", name: "CoolAir HVAC", category: "HVAC & electrical", contact: "Senthil R.", phone: "+91 98840 66543", rating: 4.5, leadDays: 1, amc: true },
-    { id: "v6", name: "Forge Merch Co.", category: "Apparel & merchandise", contact: "Neha S.", phone: "+91 97910 33445", rating: 4.3, leadDays: 10, amc: false },
+    { id: "v6", name: "Kural Apparel Co.", category: "Apparel & merchandise", contact: "Neha S.", phone: "+91 97910 33445", rating: 4.3, leadDays: 10, amc: false },
   ];
 
   /* ── Equipment ────────────────────────────────────────────────────────── */
@@ -332,7 +332,7 @@ export function buildSeed(now = Date.now()): Seed {
     { id: "i5", sku: "CON-TOWEL", name: "Microfibre towels", category: "Consumables", stock: 140, reorderPoint: 120, unitCost: 140, price: null, monthlyUsage: 60, vendorId: "v4" },
     { id: "i6", sku: "CON-SANI-5L", name: "Equipment sanitiser 5L", category: "Consumables", stock: 3, reorderPoint: 6, unitCost: 850, price: null, monthlyUsage: 8, vendorId: "v4" },
     { id: "i7", sku: "CON-WIPES", name: "Disinfectant wipes (tub)", category: "Consumables", stock: 22, reorderPoint: 20, unitCost: 320, price: null, monthlyUsage: 30, vendorId: "v4" },
-    { id: "i8", sku: "MER-TEE-M", name: "Forge dri-fit tee", category: "Merchandise", stock: 48, reorderPoint: 20, unitCost: 380, price: 899, monthlyUsage: 12, vendorId: "v6" },
+    { id: "i8", sku: "MER-TEE-M", name: "RP Fitness dri-fit tee", category: "Merchandise", stock: 48, reorderPoint: 20, unitCost: 380, price: 899, monthlyUsage: 12, vendorId: "v6" },
     { id: "i9", sku: "MER-SHAKER", name: "Shaker bottle 700ml", category: "Merchandise", stock: 9, reorderPoint: 15, unitCost: 210, price: 499, monthlyUsage: 18, vendorId: "v6" },
     { id: "i10", sku: "SPR-BELT-TM", name: "Treadmill drive belt (Integrity)", category: "Spares", stock: 0, reorderPoint: 1, unitCost: 9800, price: null, monthlyUsage: 0.3, vendorId: "v1" },
     { id: "i11", sku: "SPR-CABLE-5M", name: "Steel cable 5mm (per 5m)", category: "Spares", stock: 1, reorderPoint: 2, unitCost: 2400, price: null, monthlyUsage: 0.4, vendorId: "v2" },
