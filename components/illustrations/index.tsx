@@ -153,35 +153,147 @@ export function EmptyArt(p: P) {
   );
 }
 
-/* Hero: the whole gym in one breath — a building with a live pulse. */
-export function HeroArt({ className }: { className?: string }) {
+/* Hero: a product render of the entrance terminal — the device that makes the
+ * whole system live. Graphite body, glass screen, a lime face-scan ring, and two
+ * frosted cards carrying the real numbers. Lit like a product shot, in both themes. */
+export function HeroArt({ className, inside = 0, entries = 0 }: { className?: string; inside?: number; entries?: number }) {
   return (
-    <svg viewBox="0 0 360 200" className={className} fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <ellipse cx="180" cy="186" rx="150" ry="8" fill={S.soft} />
-      <rect x="70" y="60" width="220" height="122" rx="16" fill="var(--surface)" stroke={S.stroke} strokeWidth="2" />
-      <path d="M70 88h220" stroke={S.mid} strokeWidth="2" />
-      <text x="88" y="80" className="fill-[var(--fg)] text-[13px] font-semibold" style={{ letterSpacing: "-0.02em" }}>1G</text>
-      <circle cx="270" cy="74" r="5" fill={S.accent} />
-      <circle cx="270" cy="74" r="10" stroke={S.accent} strokeOpacity="0.5" strokeWidth="2">
-        <animate attributeName="r" values="6;14;6" dur="2.4s" repeatCount="indefinite" />
-        <animate attributeName="stroke-opacity" values="0.7;0;0.7" dur="2.4s" repeatCount="indefinite" />
-      </circle>
-      {/* windows = zones */}
-      <rect x="88" y="102" width="56" height="34" rx="8" fill={S.soft} />
-      <rect x="152" y="102" width="56" height="34" rx="8" fill="color-mix(in srgb, var(--s1) 22%, var(--surface-3))" />
-      <rect x="216" y="102" width="56" height="34" rx="8" fill="color-mix(in srgb, var(--s1) 50%, var(--surface-3))" />
-      <path d="M100 126l10-10 8 6 14-12" stroke={S.stroke} strokeWidth="2" />
-      <path d="M164 128h32M164 120h22" stroke={S.stroke} strokeWidth="2" />
-      <path d="M228 112v16M238 116v12M248 108v20M258 118v10" stroke="var(--surface)" strokeWidth="3" />
-      <rect x="160" y="146" width="40" height="36" rx="6" fill={S.soft} stroke={S.stroke} strokeWidth="2" />
-      <path d="M180 146v36" stroke={S.stroke} strokeWidth="2" />
-      {/* the pulse line */}
-      <path d="M10 40 H96 l8 -16 l10 32 l8 -22 l6 6 H350" stroke={S.blue} strokeWidth="2" strokeOpacity="0.8" />
-      <circle cx="40" cy="160" r="12" fill={S.accent} stroke={S.stroke} strokeWidth="2" />
-      <path d="M36 160h8M40 156v8" stroke="var(--brand-ink)" strokeWidth="2" />
-      <rect x="306" y="140" width="34" height="42" rx="6" fill="var(--surface)" stroke={S.stroke} strokeWidth="2" />
-      <path d="M314 152c0-4 2-6 4-6s4 2 4 6M323 152c0-6 3-9 5-9" stroke={S.stroke} strokeWidth="1.6" />
-      <rect x="312" y="164" width="22" height="10" rx="3" fill={S.accent} />
+    <svg viewBox="24 22 496 300" className={className} fill="none" aria-hidden>
+      <defs>
+        <radialGradient id="hero-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="var(--brand)" stopOpacity="0.28" />
+          <stop offset="55%" stopColor="var(--s1)" stopOpacity="0.08" />
+          <stop offset="100%" stopColor="var(--s1)" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="hero-body" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#3a3a3f" />
+          <stop offset="45%" stopColor="#1c1c1f" />
+          <stop offset="100%" stopColor="#0b0b0c" />
+        </linearGradient>
+        <linearGradient id="hero-edge" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.55" />
+          <stop offset="35%" stopColor="#ffffff" stopOpacity="0.08" />
+          <stop offset="100%" stopColor="#ffffff" stopOpacity="0.18" />
+        </linearGradient>
+        <linearGradient id="hero-screen" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#101a10" />
+          <stop offset="60%" stopColor="#060807" />
+          <stop offset="100%" stopColor="#020302" />
+        </linearGradient>
+        <linearGradient id="hero-sheen" x1="0" y1="0" x2="1" y2="0.6">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.16" />
+          <stop offset="40%" stopColor="#ffffff" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient id="hero-scan" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="var(--brand)" stopOpacity="0" />
+          <stop offset="50%" stopColor="var(--brand)" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="var(--brand)" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient id="hero-stand" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#1a1a1c" />
+          <stop offset="50%" stopColor="#4a4a50" />
+          <stop offset="100%" stopColor="#141416" />
+        </linearGradient>
+        <filter id="hero-blur" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="10" />
+        </filter>
+        <filter id="hero-card" x="-30%" y="-30%" width="160%" height="180%">
+          <feDropShadow dx="0" dy="14" stdDeviation="14" floodColor="#000" floodOpacity="0.16" />
+        </filter>
+        <clipPath id="hero-screen-clip">
+          <rect x="222" y="58" width="116" height="164" rx="14" />
+        </clipPath>
+      </defs>
+
+      {/* ambient light */}
+      <ellipse cx="282" cy="160" rx="200" ry="150" fill="url(#hero-glow)" />
+
+      {/* floor shadow */}
+      <ellipse cx="282" cy="312" rx="92" ry="9" fill="#000" opacity="0.28" filter="url(#hero-blur)" />
+
+      {/* stand */}
+      <path d="M268 248 h28 l6 58 h-40 z" fill="url(#hero-stand)" />
+      <rect x="240" y="302" width="84" height="8" rx="4" fill="url(#hero-stand)" />
+
+      {/* device body */}
+      <rect x="208" y="34" width="144" height="222" rx="28" fill="url(#hero-body)" />
+      <rect x="208.5" y="34.5" width="143" height="221" rx="27.5" stroke="url(#hero-edge)" />
+      {/* camera module */}
+      <rect x="262" y="43" width="36" height="8" rx="4" fill="#050505" />
+      <circle cx="272" cy="47" r="2.2" fill="#1d2a3a" />
+      <circle cx="271.4" cy="46.4" r="0.7" fill="#7fb2ff" opacity="0.9" />
+      <circle cx="289" cy="47" r="1.4" fill="#3a1010" />
+
+      {/* screen */}
+      <rect x="222" y="58" width="116" height="164" rx="14" fill="url(#hero-screen)" />
+      <g clipPath="url(#hero-screen-clip)">
+        {/* scan ring */}
+        <circle cx="280" cy="122" r="36" stroke="var(--brand)" strokeOpacity="0.14" strokeWidth="8" />
+        <circle cx="280" cy="122" r="36" stroke="var(--brand)" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="170 56" transform="rotate(-90 280 122)">
+          <animateTransform attributeName="transform" type="rotate" from="-90 280 122" to="270 280 122" dur="6s" repeatCount="indefinite" />
+        </circle>
+        {/* minimal face glyph */}
+        <circle cx="280" cy="114" r="10" stroke="#e9f9dc" strokeOpacity="0.85" strokeWidth="1.6" />
+        <path d="M262 142 c4 -12 32 -12 36 0" stroke="#e9f9dc" strokeOpacity="0.85" strokeWidth="1.6" strokeLinecap="round" />
+        {/* corner brackets */}
+        <g stroke="var(--brand)" strokeWidth="1.6" strokeLinecap="round" opacity="0.8">
+          <path d="M250 96 v-6 h6" />
+          <path d="M310 96 v-6 h-6" />
+          <path d="M250 148 v6 h6" />
+          <path d="M310 148 v6 h-6" />
+        </g>
+        {/* scan sweep */}
+        <rect x="222" y="0" width="116" height="26" fill="url(#hero-scan)" opacity="0.6">
+          <animate attributeName="y" values="70;160;70" dur="3.6s" repeatCount="indefinite" />
+        </rect>
+        {/* verified pill */}
+        <rect x="244" y="176" width="72" height="22" rx="11" fill="var(--brand)" />
+        <path d="M256 187 l3.5 3.5 l6.5 -7" stroke="#0b1600" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <text x="292" y="191" textAnchor="middle" fill="#0b1600" style={{ fontSize: 10, fontWeight: 600, letterSpacing: "-0.01em" }}>
+          Verified
+        </text>
+        <rect x="256" y="206" width="48" height="3" rx="1.5" fill="#ffffff" opacity="0.18" />
+        {/* glass sheen */}
+        <rect x="222" y="58" width="116" height="164" fill="url(#hero-sheen)" />
+      </g>
+      <rect x="208" y="34" width="144" height="222" rx="28" fill="url(#hero-sheen)" opacity="0.6" />
+
+      {/* frosted card — live count */}
+      <g filter="url(#hero-card)" className="float">
+        <rect x="40" y="96" width="150" height="86" rx="18" fill="var(--surface)" fillOpacity="0.86" />
+        <rect x="40.5" y="96.5" width="149" height="85" rx="17.5" stroke="var(--line-strong)" />
+        <circle cx="60" cy="118" r="3.5" fill="var(--brand)" />
+        <circle cx="60" cy="118" r="7" fill="var(--brand)" opacity="0.25">
+          <animate attributeName="r" values="4;9;4" dur="2.4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.35;0;0.35" dur="2.4s" repeatCount="indefinite" />
+        </circle>
+        <text x="72" y="122" fill="var(--muted)" style={{ fontSize: 11, fontWeight: 500 }}>
+          Live now
+        </text>
+        <text x="56" y="160" fill="var(--fg)" style={{ fontSize: 32, fontWeight: 600, letterSpacing: "-0.04em", fontVariantNumeric: "tabular-nums" }}>
+          {inside}
+        </text>
+        <text x={56 + String(inside).length * 19 + 6} y="160" fill="var(--muted)" style={{ fontSize: 11 }}>
+          inside
+        </text>
+        {[10, 16, 13, 22, 18, 26].map((h, i) => (
+          <rect key={i} x={142 + i * 7} y={164 - h} width="4" height={h} rx="2" fill="var(--s1)" opacity={0.35 + i * 0.12} />
+        ))}
+      </g>
+
+      {/* frosted card — check-ins */}
+      <g filter="url(#hero-card)" className="float" style={{ animationDelay: "-2.5s" }}>
+        <rect x="376" y="176" width="124" height="62" rx="16" fill="var(--surface)" fillOpacity="0.86" />
+        <rect x="376.5" y="176.5" width="123" height="61" rx="15.5" stroke="var(--line-strong)" />
+        <text x="392" y="198" fill="var(--muted)" style={{ fontSize: 10.5, fontWeight: 500 }}>
+          Check-ins today
+        </text>
+        <text x="392" y="224" fill="var(--fg)" style={{ fontSize: 20, fontWeight: 600, letterSpacing: "-0.03em", fontVariantNumeric: "tabular-nums" }}>
+          {entries.toLocaleString("en-IN")}
+        </text>
+        <path d="M452 224 C460 222 462 212 470 214 S480 204 488 202" stroke="var(--s1)" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="488" cy="202" r="2.5" fill="var(--s1)" />
+      </g>
     </svg>
   );
 }

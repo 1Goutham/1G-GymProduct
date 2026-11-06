@@ -49,7 +49,7 @@ export default function Today() {
             </Link>
           </div>
         </div>
-        <HeroArt className="pointer-events-none absolute -bottom-2 right-0 hidden w-[440px] opacity-95 md:block lg:w-[500px]" />
+        <HeroArt inside={snap.inside} entries={snap.entriesToday} className="pointer-events-none absolute right-2 top-1/2 hidden w-[380px] -translate-y-1/2 md:block lg:w-[420px]" />
       </section>
 
       <div className="mb-5 grid grid-cols-2 gap-4 lg:grid-cols-4">
